@@ -10,12 +10,12 @@ on:
 permissions:
   contents: read
 
+env:
+  keymousego-version: _v5_1_1
+
 jobs:
   build-windows:
     runs-on: windows-latest
-    strategy:
-      keymousego:
-        version: _v5_1_1
     steps:
       - uses: actions/checkout@v3
       - name: Set up Python 3.7
@@ -31,7 +31,7 @@ jobs:
           pyinstaller -Fw --add-data './assets;assets' KeymouseGo.py
       - name: Copy artifact
         run: |
-          mkdir artifact && mv dist/KeymouseGo.exe ./artifact/KeymouseGo${{ keymousego.version }}.exe
+          mkdir artifact && mv dist/KeymouseGo.exe ./artifact/KeymouseGo${{ keymousego-version }}.exe
       - name: Artifact
         uses: actions/upload-artifact@main
         with:
@@ -55,7 +55,7 @@ jobs:
           pyinstaller -Fw --add-data './assets:assets' KeymouseGo.py
       - name: Copy artifact
         run: |
-          mkdir artifact && mv dist/KeymouseGo ./artifact/KeymouseGo${{ keymousego.version }}
+          mkdir artifact && mv dist/KeymouseGo ./artifact/KeymouseGo${{ keymousego-version }}
       - name: Artifact
         uses: actions/upload-artifact@main
         with:
@@ -79,7 +79,7 @@ jobs:
           pyinstaller -Fw --add-data './assets:assets' KeymouseGo.py
       - name: Copy artifact
         run: |
-          mkdir artifact && mv dist/KeymouseGo ./artifact/KeymouseGo${{ keymousego.version }}
+          mkdir artifact && mv dist/KeymouseGo ./artifact/KeymouseGo${{ keymousego-version }}
       - name: Artifact
         uses: actions/upload-artifact@main
         with:
