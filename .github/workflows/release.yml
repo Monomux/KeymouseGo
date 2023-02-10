@@ -21,12 +21,14 @@ jobs:
           python-version: "3.7"
       - name: Install dependencies
         run: |
-          pip3 install -r requirements-universal.txt
+          pip3 install -r requirements-windows.txt
           pip3 install pyinstaller
       - name: Bundle Packages
         run: |
           pyinstaller -Fw --add-data './assets;assets' KeymouseGo.py
-          mkdir artifact && mv dist/KeymouseGo ./artifact
+      - name: Copy artifact
+        run: |
+          mkdir artifact && mv dist/KeymouseGo.exe ./artifact
       - name: Artifact
         uses: actions/upload-artifact@v2
         with:
@@ -48,6 +50,8 @@ jobs:
       - name: Bundle Packages
         run: |
           pyinstaller -Fw --add-data './assets:assets' KeymouseGo.py
+      - name: Copy artifact
+        run: |
           mkdir artifact && mv dist/KeymouseGo ./artifact
       - name: Artifact
         uses: actions/upload-artifact@v2
@@ -70,6 +74,8 @@ jobs:
       - name: Bundle Packages
         run: |
           pyinstaller -Fw --add-data './assets:assets' KeymouseGo.py
+      - name: Copy artifact
+        run: |
           mkdir artifact && mv dist/KeymouseGo ./artifact
       - name: Artifact
         uses: actions/upload-artifact@v2
