@@ -1,0 +1,60 @@
+# This workflow will install Python dependencies, run tests and lint with a single version of Python
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-python
+
+name: release
+
+on:
+  pull_request:
+    branches: [ "master" ]
+
+permissions:
+  contents: read
+
+jobs:
+  build-windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Python 3.7
+        uses: actions/setup-python@v3
+        with:
+          python-version: "3.7"
+      - name: Install dependencies
+        run: |
+          pip3 install -r requirements-universal.txt
+          pip3 install pyinstaller
+      - name: Bundle Packages
+        run: |
+          pyinstaller -Fw --add-data './assets;assets' KeymouseGo.py
+
+  build-linux:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up Python 3.7
+      uses: actions/setup-python@v3
+      with:
+        python-version: "3.7"
+    - name: Install dependencies
+      run: |
+        pip3 install -r requirements-universal.txt
+        pip3 install pyinstaller
+    - name: Bundle Packages
+      run: |
+        pyinstaller -Fw --add-data './assets:assets' KeymouseGo.py
+
+  build-macos:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Python 3.7
+        uses: actions/setup-python@v3
+        with:
+          python-version: "3.7"
+      - name: Install dependencies
+        run: |
+          pip3 install -r requirements-universal.txt
+          pip3 install pyinstaller
+      - name: Bundle Packages
+        run: |
+          pyinstaller -Fw --add-data './assets:assets' KeymouseGo.py
