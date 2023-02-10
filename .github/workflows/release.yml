@@ -31,7 +31,7 @@ jobs:
           pyinstaller -Fw --add-data './assets;assets' KeymouseGo.py
       - name: Copy artifact
         run: |
-          mkdir artifact && mv dist/KeymouseGo.exe ./artifact/KeymouseGo${{ env.keymousego-version }}.exe
+          mkdir artifact && mv dist/KeymouseGo.exe ./artifact/KeymouseGo${{ env.keymousego-version }}-win.exe
       - name: Artifact
         uses: actions/upload-artifact@main
         with:
@@ -55,7 +55,7 @@ jobs:
           pyinstaller -Fw --add-data './assets:assets' KeymouseGo.py
       - name: Copy artifact
         run: |
-          mkdir artifact && mv dist/KeymouseGo ./artifact/KeymouseGo${{ env.keymousego-version }}
+          mkdir artifact && mv dist/KeymouseGo ./artifact/KeymouseGo${{ env.keymousego-version }}-linux
       - name: Artifact
         uses: actions/upload-artifact@main
         with:
@@ -79,7 +79,7 @@ jobs:
           pyinstaller -Fw --add-data './assets:assets' KeymouseGo.py
       - name: Copy artifact
         run: |
-          mkdir artifact && mv dist/KeymouseGo ./artifact/KeymouseGo${{ env.keymousego-version }}
+          mkdir artifact && mv dist/KeymouseGo ./artifact/KeymouseGo${{ env.keymousego-version }}-mac
       - name: Artifact
         uses: actions/upload-artifact@main
         with:
