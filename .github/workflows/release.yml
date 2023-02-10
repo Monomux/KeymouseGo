@@ -35,7 +35,7 @@ jobs:
       - name: Artifact
         uses: actions/upload-artifact@main
         with:
-          name: artifact
+          name: windows
           path: ${{ github.workspace }}/artifact/
 
   build-linux:
@@ -59,7 +59,7 @@ jobs:
       - name: Artifact
         uses: actions/upload-artifact@main
         with:
-          name: artifact
+          name: linux
           path: ${{ github.workspace }}/artifact/
 
   build-macos:
@@ -83,5 +83,5 @@ jobs:
       - name: Artifact
         uses: actions/upload-artifact@main
         with:
-          name: artifact
+          name: macos
           path: ${{ github.workspace }}/artifact/
