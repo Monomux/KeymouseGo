@@ -33,7 +33,7 @@ jobs:
         run: |
           mkdir artifact && mv dist/KeymouseGo.exe ./artifact/KeymouseGo${{ keymousego.version }}.exe
       - name: Artifact
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@main
         with:
           name: artifact
           path: ${{ github.workspace }}/artifact/
@@ -57,7 +57,7 @@ jobs:
         run: |
           mkdir artifact && mv dist/KeymouseGo ./artifact/KeymouseGo${{ keymousego.version }}
       - name: Artifact
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@main
         with:
           name: artifact
           path: ${{ github.workspace }}/artifact/
@@ -81,7 +81,7 @@ jobs:
         run: |
           mkdir artifact && mv dist/KeymouseGo ./artifact/KeymouseGo${{ keymousego.version }}
       - name: Artifact
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@main
         with:
           name: artifact
           path: ${{ github.workspace }}/artifact/
