@@ -17,9 +17,9 @@ jobs:
   build-windows:
     runs-on: windows-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@main
       - name: Set up Python 3.7
-        uses: actions/setup-python@v3
+        uses: actions/setup-python@main
         with:
           python-version: "3.7"
       - name: Install dependencies
@@ -41,9 +41,9 @@ jobs:
   build-linux:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@main
       - name: Set up Python 3.7
-        uses: actions/setup-python@v3
+        uses: actions/setup-python@main
         with:
           python-version: "3.7"
       - name: Install dependencies
@@ -65,9 +65,9 @@ jobs:
   build-macos:
     runs-on: macos-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@main
       - name: Set up Python 3.7
-        uses: actions/setup-python@v3
+        uses: actions/setup-python@main
         with:
           python-version: "3.7"
       - name: Install dependencies
