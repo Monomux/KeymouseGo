@@ -79,7 +79,7 @@ jobs:
           pyinstaller -Fw --add-data './assets:assets' KeymouseGo.py
       - name: Copy artifact
         run: |
-          mkdir artifact && mv dist/KeymouseGo ./artifact/KeymouseGo${{ env.keymousego-version }}-mac
+          mkdir artifact && mv dist/KeymouseGo.app ./artifact/KeymouseGo${{ env.keymousego-version }}-mac
       - name: Artifact
         uses: actions/upload-artifact@main
         with:
