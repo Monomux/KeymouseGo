@@ -1,0 +1,55 @@
+# This workflow will install Python dependencies, run tests and lint with a single version of Python
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-python
+
+name: release-arm
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  keymousego-version: _v5_1_1
+
+jobs:
+  build-linux:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: pguyot/arm-runner-action@v2
+      - name: Install tools on runner
+        uses: ConorMacBride/install-package@v1
+        with:
+          apt: build-essential libgl1-mesa-dev libglu1-mesa-dev freeglut3-dev gdb cmake libxcb-xinerama0-dev libfontconfig1-dev libfreetype6-dev '^libxcb.*-dev' libx11-xcb-dev libglu1-mesa-dev libxrender-dev libxi-dev libxkbcommon-dev libxkbcommon-x11-dev qtcreator
+      - name: Set up Python 3.7
+        uses: actions/setup-python@main
+        with:
+          python-version: "3.7"
+      - name: Build Qt manually
+        run: |
+          wget https://download.qt.io/archive/qt/5.15/5.15.2/single/qt-everywhere-src-5.15.2.tar.xz
+          xz -d qt-everywhere-src-5.15.2.tar.xz
+          tar -xvf qt-everywhere-src-5.15.2.tar
+          cd qt-everywhere-src-5.15.2
+          ./configure -xcb
+          
+      - name: Build PySide2 manually
+        run: |
+          wget https://download.qt.io/official_releases/QtForPython/pyside2/PySide2-5.15.2.1-src/pyside-setup-opensource-src-5.15.2.1.tar.gz
+          tar -xvf pyside-setup-opensource-src-5.15.2.1.tar.gz
+      - name: Install dependencies
+        run: |
+          pip3 install -r requirements-universal.txt
+          pip3 install pyinstaller
+      - name: Bundle Packages
+        run: |
+          pyinstaller -Fw --add-data './assets:assets' KeymouseGo.py
+      - name: Copy artifact
+        run: |
+          mkdir artifact && mv dist/KeymouseGo ./artifact/KeymouseGo${{ env.keymousego-version }}-linux
+      - name: Artifact
+        uses: actions/upload-artifact@main
+        with:
+          name: linux
+          path: ${{ github.workspace }}/artifact/
