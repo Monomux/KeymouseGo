@@ -1,12 +1,12 @@
 name: Bug report
-about: Create a report to help us improve
+descriptioin: Create a report to help us improve
 title: '[bug report]:'
-assignees: ''
 
 body:
   - type: checkboxes
     id: issue_check
     attributes:
+      label: confirmation
       options:
         - label: I have checked the previous issues and there's no simular problems. 我已查看以往的issue并且没有找到类似的问题。
           required: true
