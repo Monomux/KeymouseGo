@@ -6,32 +6,33 @@ body:
   - type: checkboxes
     id: issue_check
     attributes:
-      label: confirmation
+      label: 我已查看以往的issue并且没有找到类似的问题
       options:
-        - label: I have checked the previous issues and there's no simular problems. 我已查看以往的issue并且没有找到类似的问题。
+        - label: I have checked the previous issues and there is no simular problems. 
           required: true
   - type: textarea
     id: describe
     attributes:
-      label: Describe the bug
-      description: Describe the problem you confronted and how to reproduce it. 描述你遇到的bug以及如何复现
+      label: 描述你遇到的bug以及如何复现
+      description: Describe the problem you confronted and how to reproduce it. 
     validations:
       required: true
   - type: textarea
-    id: screenshot
+    id: screensho
     attributes:
-      label: Screenshot _optional_ 截图(_可选_)
+      label: 截图
+      description: screenshot
   - type: input
     id: environment
     attributes:
-      label: Environment
-      description: The os you are using. 你使用的操作系统版本。
+      label: 你使用的操作系统版本
+      description: The os you are using. 
       placeholder: e.g. Windows 11 24h2
     validations:
       required: true
   - type: textarea
     id: appendix
     attributes:
-      label: Additional context
-      description: Add any other context about the problem here. 其它与问题相关的内容。
+      label: 其它与问题相关的内容
+      description: Add any other context about the problem here.
 
