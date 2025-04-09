@@ -30,8 +30,8 @@ jobs:
           enable-plugins: pyside6
           windows-icon-from-ico: Mondrian.png
           disable-console: true
-          include-plugin-directory: plugins
-          include-data-dir: assets
+          include-plugin-directory: .=plugins
+          include-data-dir: .=assets
       - name: Artifact
         uses: actions/upload-artifact@v4
         with:
@@ -60,8 +60,8 @@ jobs:
           enable-plugins: pyside6
           linux-icon: Mondrian.png
           disable-console: true
-          include-plugin-directory: plugins
-          include-data-dir: assets
+          include-plugin-directory: .=plugins
+          include-data-dir: .=assets
       - name: Artifact
         uses: actions/upload-artifact@v4
         with:
@@ -88,8 +88,8 @@ jobs:
           enable-plugins: pyside6
           linux-icon: Mondrian.png
           disable-console: true
-          include-plugin-directory: plugins
-          include-data-dir: assets
+          include-plugin-directory: .=plugins
+          include-data-dir: .=assets
       - name: Artifact
         uses: actions/upload-artifact@v4
         with:
@@ -116,8 +116,8 @@ jobs:
           enable-plugins: pyside6
           macos-app-icon: Mondrian.png
           disable-console: true
-          include-plugin-directory: plugins
-          include-data-dir: assets
+          include-plugin-directory: .=plugins
+          include-data-dir: .=assets
       - name: Artifact
         uses: actions/upload-artifact@v4
         with:
